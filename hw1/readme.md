@@ -18,6 +18,15 @@
 ####  Изменены переменные some_facts для каждой группы хостов
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/ec4533f8-1f87-4f54-ab56-e414c4d6c576)
 
+### 7,8
+#### Зашифрованы содержимое переменных some_facts
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/1068e4e9-1b52-47d6-8b32-175291a9e951)
+#### Запущен playbook, указан пароль, содержимое some_facts корректно
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/e78d306e-071b-44fa-aaba-af6b628557de)
+
+
+
+
 
 
 
