@@ -1,9 +1,14 @@
 ---
-  el:
+  alp:
     hosts:
-      centos7:
+      alpine:
         ansible_connection: docker
-  deb:
+  fed:
     hosts:
-      ubuntu:
+      fedora:
         ansible_connection: docker
+
+  local:
+    hosts:
+      localhost:
+        ansible_connection: local
