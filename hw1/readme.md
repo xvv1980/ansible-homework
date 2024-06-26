@@ -14,15 +14,28 @@
 #### Вывод переменной some_facts соотв. значениям "alp" , "fed" для хостов alpine и fedora
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/3c48e0b2-1431-4078-aa86-caa3fc192335)
 
-### 5,6
+### 5.,6.
 ####  Изменены переменные some_facts для каждой группы хостов
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/ec4533f8-1f87-4f54-ab56-e414c4d6c576)
 
-### 7,8
+### 7.,8.
 #### Зашифрованы содержимое переменных some_facts
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/1068e4e9-1b52-47d6-8b32-175291a9e951)
 #### Запущен playbook, указан пароль, содержимое some_facts корректно
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/e78d306e-071b-44fa-aaba-af6b628557de)
+
+### 9.
+#### Просмотр документации
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/6851bfd5-3fd6-4f3c-a8c1-1a64457b99dd)
+
+### 10. 
+#### Добавление localhost
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/5eb7a9eb-490c-4249-bd01-aef4ca9b7ead)
+
+### 11.
+#### Все факты собрались из своих групп. Для localhost из группы all, так как для localhost переменная some_facts не была определена в отдельной группе.
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/a6497ef3-1523-42bf-adcf-f608594a5ada)
+
 
 
 
