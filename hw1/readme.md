@@ -36,6 +36,9 @@
 #### Все факты собрались из своих групп. Для localhost из группы all, так как для localhost переменная some_facts не была определена в отдельной группе.
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/a6497ef3-1523-42bf-adcf-f608594a5ada)
 
+### 12.
+(https://github.com/xvv1980/ansible-homework/tree/main/hw1/playbook)
+
 
 
 
