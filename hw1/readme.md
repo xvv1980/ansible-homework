@@ -14,6 +14,11 @@
 #### Вывод переменной some_facts соотв. значениям "alp" , "fed" для хостов alpine и fedora
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/3c48e0b2-1431-4078-aa86-caa3fc192335)
 
+### 5
+####  Изменены переменные some_facts для каждой группы хостов
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/ec4533f8-1f87-4f54-ab56-e414c4d6c576)
+
+
 
 
 
