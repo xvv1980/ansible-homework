@@ -19,6 +19,11 @@
 Видим внесенные изменения
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/6ac0d707-b533-4bdd-9afb-c6b2bb826313)
 
+#### 8. ansible-playbook -i inventory/prod.yml site.yml --diff
+Playbook идемпотентен.
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/5e9ccc1c-ceda-441d-a2cd-e61025d6c45c)
+
+
 
 
 
