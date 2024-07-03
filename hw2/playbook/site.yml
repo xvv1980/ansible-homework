@@ -8,18 +8,21 @@
         name: clickhouse-server
         state: restarted
   tasks:
-    - block:
+    - name: Install,configure ClickHosue
+      block:
         - name: Get clickhouse distrib
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+            mode: u+rx,g+x,o+r
           with_items: "{{ clickhouse_packages }}"
       rescue:
         - name: Get clickhouse distrib
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
-    
+            mode: u+rx,g+x,o+r
+
     - name: Install clickhouse packages
       become: true
       ansible.builtin.yum:
@@ -28,90 +31,89 @@
           - clickhouse-client-{{ clickhouse_version }}.rpm
           - clickhouse-server-{{ clickhouse_version }}.rpm
       notify: Start clickhouse service
-    
+
     - name: Flush handlers
       ansible.builtin.meta: flush_handlers
-    
+
     - name: Create database
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db
-      failed_when: create_db.rc != 0 and create_db.rc !=82
+      failed_when: create_db.rc != 0 and create_db.rc != 82
       changed_when: create_db.rc == 0
 
-#-----------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------
 - name: Install Vector
   hosts: vector
   handlers:
-        - name: Start vector service
-          become: true
-          ansible.builtin.systemd_service:
-            state: started
-            name: vector
+    - name: Start vector service
+      become: true
+      ansible.builtin.systemd_service:
+        state: started
+        name: vector
   tasks:
-        - name: Install dir vector
-          become: true
-          ansible.builtin.file:
-            path: "{{ vector_distr }}"
-            state: directory
-            owner: "{{ ansible_ssh_user }}"
-            group: "{{ ansible_ssh_user }}"
-              
-        - name: Get vector distrib
-          ansible.builtin.get_url:
-            url: "https://packages.timber.io/vector/{{vector_version}}/vector-{{vector_version}}-x86_64-unknown-linux-musl.tar.gz"
-            dest: "/tmp/vector-{{vector_version}}-x86_64-unknown-linux-musl.tar.gz"
+    - name: Install dir vector
+      become: true
+      ansible.builtin.file:
+        path: "{{ vector_distr }}"
+        state: directory
+        owner: "{{ ansible_ssh_user }}"
+        group: "{{ ansible_ssh_user }}"
+        mode: u+rwx,g+rwx,o+r
 
-        - name: Extract vector
-          ansible.builtin.unarchive:
-            src: "/tmp/vector-{{vector_version}}-x86_64-unknown-linux-musl.tar.gz"
-            dest: "{{ vector_distr }}"
-            extra_opts:
-              - --strip-components=2
-            remote_src: yes
-        
-        - name: Create a user 'vector'
-          become: true
-          ansible.builtin.user:
-            name: vector
-            create_home: no
-          
-        - name: Mkdir vector
-          become: true
-          ansible.builtin.file:
-            path: "{{item}}/vector"
-            state: directory
-            owner: "vector"
-            group: "vector"
-          with_items:
-                - /etc 
-                - /var/lib
+    - name: Get vector distrib
+      ansible.builtin.get_url:
+        url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-x86_64-unknown-linux-musl.tar.gz"
+        dest: "/tmp/vector-{{ vector_version }}-x86_64-unknown-linux-musl.tar.gz"
+        mode: u+rwx,g+rwx,o+r
 
-        - name: Configurate vector
-          become: true
-          ansible.builtin.template:
-            src: files/vector.j2
-            dest: "/etc/vector/vector.yaml"
+    - name: Extract vector
+      ansible.builtin.unarchive:
+        src: "/tmp/vector-{{ vector_version }}-x86_64-unknown-linux-musl.tar.gz"
+        dest: "{{ vector_distr }}"
+        extra_opts:
+          - --strip-components=2
+        remote_src: true
 
-        - name: Copy vector to /usr/bin
-          become: true
-          copy:
-             src: "{{ vector_distr }}/bin/vector"
-             dest: "/usr/bin"
-             remote_src: yes
-             mode: u+rwx,g+x,o+x
-          notify: Start vector service
+    - name: Create a user 'vector'
+      become: true
+      ansible.builtin.user:
+        name: vector
+        create_home: false
 
-        - name: Configure systemd
-          become: true
-          copy:
-             src: "{{ vector_distr }}/etc/systemd/vector.service"
-             dest: "/etc/systemd/system"
-             remote_src: yes
-          notify: Start vector service
-        
-        - name: Flush handlers
-          meta: flush_handlers
-        #- name: Just force systemd to reread configs (2.4 and above)
-        #  ansible.builtin.systemd_service:
-         #    daemon_reload: true
-        #  notify: Start vector service
+    - name: Mkdir vector
+      become: true
+      ansible.builtin.file:
+        path: "{{ item }}/vector"
+        state: directory
+        owner: "vector"
+        group: "vector"
+        mode: u+rwx,g+rwx,o+r
+      with_items:
+        - /etc
+        - /var/lib
+
+    - name: Configurate vector
+      become: true
+      ansible.builtin.template:
+        src: files/vector.j2
+        dest: "/etc/vector/vector.yaml"
+        mode: u+rw,g+rw,o+r
+      notify: Start vector service
+
+    - name: Copy vector to /usr/bin
+      become: true
+      ansible.builtin.copy:
+        src: "{{ vector_distr }}/bin/vector"
+        dest: "/usr/bin"
+        remote_src: true
+        mode: u+rwx,g+x,o+x
+      notify: Start vector service
+
+    - name: Configure systemd
+      become: true
+      ansible.builtin.copy:
+        src: "{{ vector_distr }}/etc/systemd/vector.service"
+        dest: "/etc/systemd/system"
+        remote_src: true
+        mode: u+rw,g+r,o+r
+      notify: Start vector service

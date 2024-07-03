@@ -3,10 +3,10 @@ clickhouse:
   hosts:
     ubuntu:
         ansible_ssh_user: xvv1980
-        ansible_host: 158.160.152.16
+        ansible_host: 158.160.161.140
 
 vector:
   hosts:
     ubuntu:
         ansible_ssh_user: xvv1980
-        ansible_host: 158.160.152.16
+        ansible_host: 158.160.161.140
