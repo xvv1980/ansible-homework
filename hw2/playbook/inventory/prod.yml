@@ -1,5 +1,12 @@
 ---
 clickhouse:
   hosts:
-    clickhouse-01:
-      ansible_host: <IP_here>
+    ubuntu:
+        ansible_ssh_user: xvv1980
+        ansible_host: 158.160.152.16
+
+vector:
+  hosts:
+    ubuntu:
+        ansible_ssh_user: xvv1980
+        ansible_host: 158.160.152.16

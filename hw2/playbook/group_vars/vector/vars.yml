@@ -1,0 +1,7 @@
+---
+vector_version: "0.39.0"
+vector_distr: "/tmp/vector"
+#clickhouse_packages:
+#  - clickhouse-client
+#  - clickhouse-server
+#  - clickhouse-common-static
