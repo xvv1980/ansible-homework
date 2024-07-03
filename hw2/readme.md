@@ -47,6 +47,11 @@ Playbook идемпотентен
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/5e9ccc1c-ceda-441d-a2cd-e61025d6c45c)
 
 
+Ссылка на коммит
+
+https://github.com/xvv1980/ansible-homework/commit/d7826b20f4f05294d5d5d4320a02e33c38739e17
+
+
 
 
 
