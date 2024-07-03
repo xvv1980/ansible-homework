@@ -12,8 +12,13 @@
 Исправляем
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/618802e2-6c47-4e04-b183-229215ca11f9)
 
-#### 6.
+#### 6. ansible-playbook -i inventory/prod.yml site.yml --check
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/86adaff2-4329-4a3f-bcbe-1e81e2ed9298)
+
+#### 7. ansible-playbook -i inventory/prod.yml site.yml --diff
+Видим внесенные изменения
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/6ac0d707-b533-4bdd-9afb-c6b2bb826313)
+
 
 
 
