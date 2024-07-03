@@ -10,5 +10,10 @@
 Видим различные синтакс. и прочие ошибки
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/063a675a-0b67-44e9-af7c-fd9ff9d5f666)
 Исправляем
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/618802e2-6c47-4e04-b183-229215ca11f9)
+
+#### 6.
+![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/86adaff2-4329-4a3f-bcbe-1e81e2ed9298)
+
 
 
