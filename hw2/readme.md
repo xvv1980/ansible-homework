@@ -22,7 +22,7 @@
     ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/634c6e2f-d087-4a41-9914-12d6308026db)
 
 
-
+ 4. https://github.com/xvv1980/ansible-homework/commit/0084c2b5ec84c250bebb1ddb9826002803c5f7ae
    
 
 # Описание доработок playbook site.yml(Домашняя работа №2)
