@@ -14,7 +14,12 @@
        * настраиваем web-сервер на проект
 
  3. После запуска плейбука
+    Lighthouse
     ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/86abdb2a-6eb3-483d-8eea-b34fc01a804d)
+
+    Clickhouse
+    ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/634c6e2f-d087-4a41-9914-12d6308026db)
+
 
 
    
