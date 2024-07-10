@@ -1,3 +1,25 @@
+# Описание доработок playbook site.yml
+
+1. Создана группа vector, в которую включен хост ubuntu. Та же виртуалка, где устанавливается clickhouse.
+2. Созданы переменные для группы:
+   - vector_version: "0.39.0"
+   - vector_distr: "/tmp/vector"   <--- временная директория куда распакуется архив и откуда будут скопированы бинарник vector и модуль systemd.
+3. Выбран вариант с запуском через systemd.
+   Созданные tasks:
+     - создадут УЗ vector
+     - создадут каталоги для распаковки/инсталяции  vector(/var/lib/vector, /etc/vector, /tmp/vector)
+     - скачают/распакуют архив
+     - скорпируют исполняемый файл в /usr/bin
+     - скопируют модуль systemd в /etc/systemd/system
+     - сформируют конфиг по шаблону  vector.yaml
+     - запустят процесс.
+       
+
+
+
+
+
+
 ### Процесс запуска доработаного playbook с результатом:
 
 #### Запуск созданного playbook
@@ -23,6 +45,11 @@
 Playbook идемпотентен
 
 ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/5e9ccc1c-ceda-441d-a2cd-e61025d6c45c)
+
+
+Ссылка на коммит
+
+https://github.com/xvv1980/ansible-homework/commit/d7826b20f4f05294d5d5d4320a02e33c38739e17
 
 
 
