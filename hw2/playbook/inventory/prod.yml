@@ -1,12 +1,18 @@
 ---
 clickhouse:
   hosts:
-    ubuntu:
-        ansible_ssh_user: xvv1980
-        ansible_host: 158.160.161.140
+      c1:
+        ansible_ssh_user: centos
+        ansible_host: 51.250.64.142
 
 vector:
   hosts:
-    ubuntu:
-        ansible_ssh_user: xvv1980
-        ansible_host: 158.160.161.140
+      v1:
+        ansible_ssh_user: centos
+        ansible_host: 51.250.3.167
+
+lighthouse:
+  hosts:
+      l1:
+        ansible_ssh_user: centos
+        ansible_host: 158.160.38.50
