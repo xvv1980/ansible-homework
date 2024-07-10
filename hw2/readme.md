@@ -1,4 +1,25 @@
-# Описание доработок playbook site.yml
+# Описание доработок playbook site.yml(Домашняя работа №3)
+1. Подготовлены 3 виртуальные машины посредством терраформ. vm-clik, vm-light, vm-vector
+   ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/47a9f47d-2a74-4a89-b9d2-39d41ef96660)
+
+2. Доработан site.yml
+  - [x] Создана группа lighthouse, в которую включен хост l1.    
+  - [x] Созданы переменные для группы:
+       * lighthouse_user: "centos"                                   <-- УЗ для nginx и lighthouse
+       * lighthouse_vcs: "https://github.com/VKCOM/lighthouse.git"   <-- для модуля GIT
+       * lighthouse_dest_dir: "/home/centos/lighthouse"              <-- куда устанавливаем
+  - [x] Созданы tasks:
+       * установка git
+       * клонирование проекта lighthouse
+       * настраиваем web-сервер на проект
+
+ 3. После запуска плейбука
+    ![изображение](https://github.com/xvv1980/ansible-homework/assets/169840386/86abdb2a-6eb3-483d-8eea-b34fc01a804d)
+
+
+   
+
+# Описание доработок playbook site.yml(Домашняя работа №2)
 
 1. Создана группа vector, в которую включен хост ubuntu. Та же виртуалка, где устанавливается clickhouse.
 2. Созданы переменные для группы:
